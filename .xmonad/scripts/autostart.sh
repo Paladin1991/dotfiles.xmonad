@@ -1,14 +1,10 @@
 #!/bin/bash
 if pgrep polybar; then
     killall -q polybar
-    polybar -c ~/.config/polybar/config bar1 &
-    polybar -c ~/.config/polybar/config bar2 &
-    polybar -c ~/.config/polybar/config bar3 &
+    polybar -r example &
     exit 1
 else
-    polybar -c ~/.config/polybar/config bar1 &
-    polybar -c ~/.config/polybar/config bar2 &
-    polybar -c ~/.config/polybar/config bar3 &
+    polybar -r example &
 fi
 
 setxkbmap -model abnt2 -layout br -variant abnt2
