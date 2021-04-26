@@ -14,27 +14,25 @@
 ;
 ;   The README contains a lot of information
 ;
-;==========================================================
+;========================================================== 
 
 [colors]
-background           = #0D1212
-background-alt       = #FF6563
-foreground           = #EBE1CD
-foreground-alt       = #EBE1CD
-primary              = #EBE1CD
-secondary            = #EBE1CD
-alert                = #EBE1CD
-non                  = #EBE1CD
+background           = #171815
+background-alt       = #6FB4F0
+foreground           = #D9E6CA
 
-[bar/bar1]
-width = 20%
+[bar/example]
+width = 99%
 height = 40
-offset-x = 1%
-offset-y = 2%
-radius = 20.0
+offset-x = 0.5%
+offset-y = 2.0%
+radius = 0
 fixed-center = true
 bottom = false
 enable-ipc = true
+
+tray-position = right
+tray-padding = 5
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -45,168 +43,33 @@ line-color = ${colors.background-alt}
 border-size = 0
 border-color = ${colors.background}
 
-padding-left = 3
-padding-right = 3
+padding-left = 1
+padding-right = 1
 
-module-margin-left = 2
-module-margin-right = 2
+module-margin-left = 1
+module-margin-right = 1
 
-font-0 = Inter:style=Regular:size=13;2
-font-1 = FontAwesome 5 Free:style=Solid:size=13;3
-font-2 = Font Awesome 5 Brands:pixelsize=13;2
+font-1 = Font Awesome 5 Free:style=Solid:pixelsize=11;2
+font-2 = Font Awesome 5 Brands:pixelsize=11;2
+font-0 = Fira Code:style=normal:size=13;2
 
-modules-center =spotify
+modules-left    = spotify workspaces
+modules-center  = xwindow
+modules-right   = volume date powermenu
 
-wm-restack = bspwm
+wm-restack = i3
 ;wm-restack = bspwm
 
-override-redirect = false
+override-redirect = true
 
 ;; scroll-up = bspwm-desknext
-;; scroll-down = bspwm-deskprev
+;; scroll-down = bspwm-deskprev 
 
-;scroll-up = i3wm-wsnext
+scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
 
 cursor-click = pointer
 cursor-scroll = ns-resize
-
-[bar/bar2]
-width = 25%
-height = 40
-offset-x = 38%
-offset-y = 2%
-radius = 20.0
-fixed-center = true
-bottom = false
-enable-ipc = true
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 0
-line-color = ${colors.background-alt}
-
-border-size = 0
-border-color = ${colors.background}
-
-padding-left = 3
-padding-right = 3
-
-module-margin-left = 2
-module-margin-right = 2
-
-font-0 = Inter:style=normal:size=13;2
-font-1 = FontAwesome 5 Free:style=Solid:size=13;2
-font-2 = Font Awesome 5 Brands:pixelsize=13;2
-
-modules-center = workspaces
-
-wm-restack = bspwm
-;wm-restack = bspwm
-
-override-redirect = false
-
-;; scroll-up = bspwm-desknext
-;; scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
-cursor-click = pointer
-cursor-scroll = ns-resize
-
-[bar/bar3]
-width = 20%
-height = 40
-offset-x = 78.8%
-offset-y = 2%
-radius = 20.0
-fixed-center = true
-bottom = false
-enable-ipc = true
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 0
-line-color = ${colors.background-alt}
-
-border-size = 0
-border-color = ${colors.background}
-
-padding-left = 3
-padding-right = 3
-
-module-margin-left = 2
-module-margin-right = 2
-
-font-0 = Inter:style=normal:size=13;2
-font-1 = FontAwesome 5 Free:style=Solid:size=13;2
-font-2 = Font Awesome 5 Brands:pixelsize=13;2
-font-3 = iosevka:pixelsize=13;2
-
-modules-left   = volume
-modules-center = date
-modules-right  = power_menu
-wm-restack = bspwm
-;wm-restack = bspwm
-
-override-redirect = false
-
-;; scroll-up = bspwm-desknext
-;; scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
-cursor-click = pointer
-cursor-scroll = ns-resize
-
-[module/time]
-type = internal/date
-interval = 60
-
-format = <label>
-format-background = #a3be8c
-format-padding = 1
-
-date = %{F#282A36}󰥔 %H:%M%{F-}
-time-alt = %{F#282A36}󰃭 %a, %b %d%{F-}
-
-label = %date%%time%
-
-[module/workspaces]
-type = internal/xworkspaces
-;pin-workspaces = true
-enable-click = true
-enable-scroll = true
-format-padding = 1
-
-icon-default = 
-
-format = <label-state>
-format-background = ${color.bg1}
-label-active = "  "
-label-occupied = "  "
-label-urgent = "  "
-label-empty = "  "
-
-label-active-foreground = ${colors.background-alt}
-label-urgent-foreground = #F26364
-
-label-empty-padding = 1
-label-active-padding = 1
-label-urgent-padding = 1
-label-occupied-padding = 1
-
-
-[module/power_menu]
-type = custom/text
-content = "    "
-content-padding = 0
-content-foreground = ${colors.foreground}
-click-left = eww open power
 
 [module/spotify]
 type = custom/script
@@ -216,6 +79,36 @@ format-prefix = "  "
 click-left = eww open spotify
 format = <label>
 exec = ~/.config/polybar/scripts/scroll_spotify_status.sh
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+format-foreground = ${colors.foreground}
+format-padding = 4
+
+[module/workspaces]
+type = internal/xworkspaces
+pin-workspaces = false
+enable-click = true
+enable-scroll = true
+format-padding = 1
+
+icon-default = 
+
+format = <label-state>
+format-background = ${color.bg1}
+label-active = 
+label-occupied = 
+label-urgent = 
+label-empty = 
+
+label-empty-padding = 1
+label-active-padding = 1
+label-urgent-padding = 1
+label-occupied-padding = 1
+
+label-active-foreground = ${colors.background-alt}
+label-urgent-foreground = #F26364
 
 [module/volume]
 type = internal/pulseaudio
@@ -237,13 +130,20 @@ ramp-volume-6 = "   "
 
 click-right = eww open vol 
 
+[module/powermenu]
+type = custom/text
+content = 
+content-padding = 0
+content-foreground = ${colors.background-alt}
+click-left = eww open power
+
 [module/date]
 type = internal/date
 interval = 5
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
+format-prefix-foreground = ${colors.background-alt}
 time      = %I:%M %p
 time-alt  = %A, %d %B %Y
+format-prefix = 
 label = " %time%"
 
 
